@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import login from '@/api/user'
+import { login } from '@/api/user'
 import { PasswordRule, UsernameRule } from './rule'
 export default {
   data () {
@@ -51,7 +51,7 @@ export default {
       })
       try {
         const res = await login(this.username, this.password)
-        this.$store.commit('SetToken', res.data.data)
+        this.$store.commit('SetUser', res.data.body)
         this.$router.push('/my')
         this.$toast.success('登录成功')
       } catch (error) {

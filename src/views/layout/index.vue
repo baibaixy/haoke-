@@ -32,7 +32,9 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      active: 0
+    }
   },
   mounted () {},
   computed: {},

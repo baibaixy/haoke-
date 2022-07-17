@@ -1,1 +1,1 @@
-export const baseIMG = 'http://liufusong.top:8080/'
+export const baseIMG = 'http://liufusong.top:8080'

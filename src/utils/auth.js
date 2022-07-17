@@ -1,5 +1,5 @@
 import storage from './storage'
-const HAOKE_ZF = 'HAOKE_ZF_TOKEN'
-export const setUser = (token) => storage.set(HAOKE_ZF, token)
-export const getUser = () => storage.get(HAOKE_ZF)
-export const removeUser = () => storage.remove(HAOKE_ZF)
+const TOKEN_KEY = 'HEIMA_TOUTIAO_TOKEN'
+export const getToken = () => storage.get(TOKEN_KEY)
+export const setToken = (key) => storage.set(TOKEN_KEY, key)
+export const removeToken = () => storage.remove(TOKEN_KEY)
