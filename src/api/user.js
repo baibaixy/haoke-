@@ -13,3 +13,17 @@ export const getUserInfo = () =>
       Authorization: store.state.user.token
     }
   })
+export const getUserFav = () =>
+  request({
+    url: '/user/favorites',
+    headers: {
+      Authorization: store.state.user.token
+    }
+  })
+export const getUserRent = () =>
+  request({
+    url: '/user/houses',
+    headers: {
+      Authorization: store.state.user.token
+    }
+  })

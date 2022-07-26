@@ -2,7 +2,7 @@
   <div>
     <header>
       <div v-if="isLogin" class="banner_islogin">
-        <img class="my_bg" :src="img" />
+        <img class="my_bg" :src="baseIMG + userInfo.avatar" />
         <div class="my_info_yk">
           <van-row
             ><van-image
@@ -45,32 +45,32 @@
     </header>
     <main class="my_main">
       <van-grid :column-num="3">
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="我的收藏" @click="ShouCang">
           <template #icon>
             <span class="iconfont icon-shoucang"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="我的出租" @click="ChuZu">
           <template #icon>
             <span class="iconfont icon-fangzi"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="看房记录">
           <template #icon>
             <span class="iconfont icon-shijian"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="成为房主">
           <template #icon>
             <span class="iconfont icon-fangzhu"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="个人资料">
           <template #icon>
             <span class="iconfont icon-geren"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="联系我们">
           <template #icon>
             <span class="iconfont icon-24gl-headset"></span>
           </template>
@@ -84,13 +84,13 @@
 </template>
 <script>
 import { getUserInfo } from '@/api/user'
-import baseIMG from '@/utils/img'
+// import baseIMG from '@/utils/img'
 export default {
   data () {
     return {
       userInfo: {},
       img: '',
-      baseIMG
+      baseIMG: 'http://liufusong.top:8080'
     }
   },
   mounted () {},
@@ -121,12 +121,19 @@ export default {
             data: { body }
           } = await getUserInfo()
           this.userInfo = body
-          this.img = 'http://liufusong.top:8080' + this.userInfo.avatar
+          console.log(body)
+          // this.img = 'http://liufusong.top:8080' + this.userInfo.avatar
           console.log(body)
         }
       } catch (error) {
         this.$toast.fail('请重新登录')
       }
+    },
+    ShouCang () {
+      this.$router.push('/favorate')
+    },
+    ChuZu () {
+      this.$router.push('/rent')
     }
   },
   created () {
@@ -245,7 +252,7 @@ export default {
   width: 345px;
   height: 85px;
   border-radius: 5px;
-  margin: 8px auto;
+  margin: 8px auto 50px;
   img {
     width: 100%;
     height: 100%;
